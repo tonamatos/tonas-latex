@@ -1,0 +1,54 @@
+% tonas-notes.sty
+\ProvidesPackage{TonaTemplate}
+
+\usepackage{amsfonts,amssymb,amsmath, amsthm}
+\usepackage{graphicx}
+\usepackage{systeme}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pgf,tikz,pgfplots}
+\usepackage{fontawesome5}
+\usepackage[hidelinks]{hyperref}
+\usepackage[outline]{contour}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{pythonhighlight}
+\usepackage{enumitem}
+\newcommand*{\fullchili}{\textcolor{red}{\faPepperHot}}
+\newcommand*{\emptychili}{\textcolor{white}{\contour{red}{\faPepperHot}}}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem*{theorem}{Theorem}
+
+\pgfplotsset{compat=1.15}
+\usepgfplotslibrary{fillbetween}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\usetikzlibrary{calc}
+
+\def\gcd{\mathop{\rm gcd}\nolimits}
+\def\lcm{\mathop{\rm lcm}\nolimits}
+\def\mult{\mathop{\rm mult}\nolimits}
+\def\ord{\mathop{\rm ord}\nolimits}
+\def\Aut{\mathop{\rm Aut}\nolimits}
+
+\pagestyle{headandfoot}
+
+\firstpageheader{Course Name - Summer 2025}{}{}
+\firstpageheadrule
+
+\runningheader{Course Name}{}{Page \thepage\ of \numpages}
+\runningheadrule
+\firstpagefooter{}{\textcolor{lightgray}{\href{https://}{2025\ \copyright\ University of }}}{}
+\runningfooter{}{\href{https://}{\textcolor{lightgray}{2025\ \copyright\ University of }}}{}
+
+\newcommand{\cmt}[1]{
+    \begin{mdframed}[backgroundcolor=SpringGreen!20,linecolor=OliveGreen!40,fontcolor=OliveGreen,roundcorner=5pt,]
+    #1
+    \end{mdframed}
+}
+
+\newcommand{\answer}[1]{
+    \begin{mdframed}
+    \underline{Solution}
+    #1
+    \end{mdframed}
+}

@@ -1,0 +1,63 @@
+% tonas-papers.sty
+\ProvidesPackage{tonas-papers}
+
+\usepackage{amsfonts,amssymb,amsmath,amsthm}
+\usepackage{graphicx}
+%\usepackage{systeme}
+\usepackage[dvipsnames]{xcolor}
+%\usepackage{pgf,tikz,pgfplots}
+\usepackage{fontawesome5}
+\usepackage[hidelinks]{hyperref}
+\usepackage[outline]{contour}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{pythonhighlight}
+\usepackage{enumitem}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+% Define the running header for subsequent pages
+\fancyhf{} % Clear all header and footer fields
+\fancyhead[L]{Notes}                  % Left header: "Intro to Proofs"
+\fancyhead[C]{}                                 % Center header: empty
+\fancyhead[R]{Page \thepage\ of \pageref{LastPage}} % Right header: "Page X of Y"
+\renewcommand{\headrulewidth}{0.4pt}            % Header rule thickness
+
+% Define the running footer for subsequent pages
+\fancyfoot[L]{}                                 % Left footer: empty
+\fancyfoot[C]{} % Center footer with copyright
+\fancyfoot[R]{}                                 % Right footer: empty
+\renewcommand{\footrulewidth}{0pt}              % No footer rule
+
+% Define a custom style for the first page
+\fancypagestyle{firstpage}{%
+  \fancyhf{} % Clear header and footer fields for first page
+  \fancyfoot[C]{} % Center footer with copyright
+  \renewcommand{\headrulewidth}{0pt}            % No header rule on first page
+  \renewcommand{\footrulewidth}{0pt}            % No footer rule on first page
+}
+
+% Apply the first page style on the first page
+\AtBeginDocument{\thispagestyle{firstpage}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{axiom}{Axiom}[]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{fact}{Fact}[section]
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\newcommand{\cmt}[1]{
+    \begin{mdframed}[backgroundcolor=SpringGreen!20,linecolor=OliveGreen!40,fontcolor=OliveGreen,roundcorner=5pt,]
+    #1
+    \end{mdframed}
+}
+
+\newcommand{\warn}[1]{
+    \begin{mdframed}[backgroundcolor=Red!20,linecolor=Red!40,fontcolor=Red,roundcorner=5pt,]
+    \faIcon{exclamation-triangle} #1
+    \end{mdframed}
+}
