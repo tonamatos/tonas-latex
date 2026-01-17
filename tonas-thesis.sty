@@ -1,0 +1,47 @@
+% --- Packages ---
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{lineno}
+\usepackage{lipsum}
+\usepackage[hidelinks]{hyperref}
+
+% --- Theorem Environments ---
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% --- Common Operators for Tona's research ---
+\DeclareMathOperator{\Fer}{Fer}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\img}{img}
+
+% --- Custom Environments ---
+\newenvironment{publications}
+  {\chapter*{List of Publications}
+   \addcontentsline{toc}{chapter}{List of Publications}
+   \noindent The contents of this thesis have been published in the following articles:}
+  {}
+
+% --- Comments & Warnings ---
+\newcommand{\cmt}[1]{
+    \begin{mdframed}[backgroundcolor=SpringGreen!20,linecolor=OliveGreen!40,fontcolor=OliveGreen,roundcorner=5pt,]
+    #1
+    \end{mdframed}
+}
+
+\newcommand{\warn}[1]{
+    \begin{mdframed}[backgroundcolor=Red!20,linecolor=Red!40,fontcolor=Red,roundcorner=5pt,]
+    \faIcon{exclamation-triangle} #1
+    \end{mdframed}
+}
