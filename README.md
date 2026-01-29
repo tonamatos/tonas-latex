@@ -30,4 +30,6 @@ Once you have your desired style file, use the following line in the preamble of
 \usepackage{common/tonas-thesis}
 ```
 
-## Templates and demos coming soon...
+## Example: math course handouts
+
+![example](handouts.png)
