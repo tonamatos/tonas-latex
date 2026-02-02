@@ -7,20 +7,23 @@
 \usepackage[dvipsnames]{xcolor}
 %\usepackage{pgf,tikz,pgfplots}
 \usepackage{fontawesome5}
-\usepackage[hidelinks]{hyperref}
 \usepackage[outline]{contour}
 \usepackage[framemethod=TikZ]{mdframed}
 \usepackage{pythonhighlight}
 \usepackage{enumitem}
 \usepackage{lastpage}
 \usepackage{fancyhdr}
+\usepackage{microtype}
+\usepackage{mathpazo} % Palatino font: elegant, readable, and great for Math
+\usepackage[T1]{fontenc}
+\usepackage[hidelinks]{hyperref}
 \pagestyle{fancy}
 
 % Define the running header for subsequent pages
 \fancyhf{} % Clear all header and footer fields
-\fancyhead[L]{Notes}                  % Left header: "Intro to Proofs"
-\fancyhead[C]{}                                 % Center header: empty
-\fancyhead[R]{Page \thepage\ of \pageref{LastPage}} % Right header: "Page X of Y"
+\fancyhead[L]{\small\itshape\leftmark} % Dynamically shows the Section Name
+\fancyhead[R]{\small Page \thepage\ of \pageref{LastPage}}
+\renewcommand{\sectionmark}[1]{\markboth{#1}{}} % Removes "Section X" prefix
 \renewcommand{\headrulewidth}{0.4pt}            % Header rule thickness
 
 % Define the running footer for subsequent pages
@@ -60,4 +63,14 @@
     \begin{mdframed}[backgroundcolor=Red!20,linecolor=Red!40,fontcolor=Red,roundcorner=5pt,]
     \faIcon{exclamation-triangle} #1
     \end{mdframed}
+}
+
+\renewenvironment{abstract}{
+    \begin{center}
+    {\bfseries \abstractname\vspace{-.5em}\vspace{0pt}}
+    \end{center}
+    \quotation
+    \small
+}{
+    \endquotation
 }
