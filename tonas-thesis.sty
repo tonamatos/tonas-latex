@@ -1,13 +1,26 @@
-% tonas-thesis.sty
-\ProvidesPackage{tonas-thesis}
+\ProvidesPackage{common/tonas-thesis}
 
-% --- Packages ---
+% --- Core Packages ---
 \usepackage{amsmath, amssymb, amsthm}
 \usepackage{graphicx}
 \usepackage{lineno}
 \usepackage{lipsum}
 \usepackage{enumitem}
+\usepackage[dvipsnames]{xcolor} % Required for the colors in your cmt/warn boxes
 \usepackage[hidelinks]{hyperref}
+\usepackage[framemethod=TikZ]{mdframed} % For the fancy cmt/warn boxes
+\usepackage{fontawesome5} % For \faIcon
+
+% --- Figures and TikZ ---
+\usepackage{subcaption} % For subfigure environment
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta, shapes.geometric}
+
+% Define the styles used in your example TikZ code
+\tikzset{
+    vertex/.style={circle, draw, fill=black, inner sep=0pt, minimum size=4pt},
+    vlabel/.style={font=\small, color=black}
+}
 
 % --- Theorem Environments ---
 \theoremstyle{plain}
@@ -15,21 +28,36 @@
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{claim}{Claim}[theorem] % Numbered within theorems
 
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{example}[theorem]{Example}
+\newtheorem{question}{Question}[chapter]
+\newtheorem{conjecture}{Conjecture}[chapter]
 
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 
-% --- Common Operators for Tona's research ---
+% --- Special Claim Proof Environment ---
+% This creates a proof environment for claims that ends with a white square 
+% to distinguish it from the main theorem proof (which ends with a black/filled square).
+\newenvironment{claimproof}[1][Proof of Claim]{
+    \begin{proof}[#1]
+    \renewcommand{\qedsymbol}{$\dashv$} % Or $\openbox$
+}{
+    \end{proof}
+}
+
+% --- Common Operators ---
 \DeclareMathOperator{\Fer}{Fer}
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\Stab}{Stab}
 \DeclareMathOperator{\dom}{dom}
 \DeclareMathOperator{\img}{img}
+\DeclareMathOperator{\bal}{bal}
 \DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\cl}{cl}
 
 % --- Custom Environments ---
 \newenvironment{publications}
@@ -40,13 +68,13 @@
 
 % --- Comments & Warnings ---
 \newcommand{\cmt}[1]{
-    \begin{mdframed}[backgroundcolor=SpringGreen!20,linecolor=OliveGreen!40,fontcolor=OliveGreen,roundcorner=5pt,]
+    \begin{mdframed}[backgroundcolor=SpringGreen!20,linecolor=OliveGreen!40,fontcolor=OliveGreen,roundcorner=5pt]
     #1
     \end{mdframed}
 }
 
 \newcommand{\warn}[1]{
-    \begin{mdframed}[backgroundcolor=Red!20,linecolor=Red!40,fontcolor=Red,roundcorner=5pt,]
+    \begin{mdframed}[backgroundcolor=Red!10,linecolor=Red!40,fontcolor=Red,roundcorner=5pt]
     \faIcon{exclamation-triangle} #1
     \end{mdframed}
 }
