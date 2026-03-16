@@ -30,6 +30,11 @@ Once you have your desired style file, use the following line in the preamble of
 \usepackage{common/tonas-thesis}
 ```
 
+## Example: academic paper with landing page
+
+See [this template](https://github.com/tonamatos/tonas-paper-template) for a minimal Tex workflow with instant sharing capabilities.
+You can make a simple html landing page and publish for free using GitHub pages, or just have the PDF instantly displayed, ready to be embedded in your website, for example.
+
 ## Example: math course handouts
 
 ![example](handouts.png)
