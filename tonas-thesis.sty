@@ -10,6 +10,7 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage[framemethod=TikZ]{mdframed} % For the fancy cmt/warn boxes
 \usepackage{fontawesome5} % For \faIcon
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
 
 % --- Figures and TikZ ---
 \usepackage{subcaption} % For subfigure environment
@@ -58,6 +59,11 @@
 \DeclareMathOperator{\bal}{bal}
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\cl}{cl}
+
+\newcommand{\tFer}{\texttt{Fer}\ }
+\newcommand{\tfer}{\texttt{fer}\ }
+\newcommand{\len}{\mathrm{len}}
+\newcommand{\RecFer}{\texttt{RecFer}\ }
 
 % --- Custom Environments ---
 \newenvironment{publications}
