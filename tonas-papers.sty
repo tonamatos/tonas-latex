@@ -80,14 +80,26 @@
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{fact}[theorem]{Fact}
 \newtheorem{axiom}{Axiom}
+\newtheorem{claim}{Claim}[theorem] % Numbered within theorems
 
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{example}[theorem]{Example}
+\newtheorem{question}{Question}[section]
 \newtheorem{conjecture}[theorem]{Conjecture}
 
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
+
+% --- Special Claim Proof Environment ---
+% Proof environment for claims that ends with a white square 
+% to distinguish it from the main theorem proof (which ends with a black/filled square).
+\newenvironment{claimproof}[1][Proof of Claim]{
+    \begin{proof}[#1]
+    \renewcommand{\qedsymbol}{$\openbox$} % Or \dashv
+}{
+    \end{proof}
+}
 
 % --- Math Operators (The Thesis Collection) ---
 \DeclareMathOperator{\Fer}{Fer}
