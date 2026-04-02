@@ -13,10 +13,10 @@
 \usepackage{lineno}
 \usepackage{lipsum}
 \usepackage{enumitem}
-\usepackage[dvipsnames]{xcolor} % Required for the colors in your cmt/warn boxes
+\usepackage[dvipsnames]{xcolor}         % Required for the colors in cmt/warn boxes
 \usepackage[hidelinks]{hyperref}
 \usepackage[framemethod=TikZ]{mdframed} % For the fancy cmt/warn boxes
-\usepackage{fontawesome5} % For \faIcon
+\usepackage{fontawesome5}               % For \faIcon
 \usepackage[ruled,vlined,linesnumbered]{algorithm2e}
 
 % --- Figures and TikZ ---
@@ -24,7 +24,6 @@
 \usepackage{tikz}
 \usetikzlibrary{positioning, arrows.meta, shapes.geometric}
 
-% Define the styles used in your example TikZ code
 \tikzset{
     vertex/.style={circle, draw, fill=black, inner sep=0pt, minimum size=4pt},
     vlabel/.style={font=\small, color=black}
@@ -48,11 +47,11 @@
 \newtheorem{remark}[theorem]{Remark}
 
 % --- Special Claim Proof Environment ---
-% This creates a proof environment for claims that ends with a white square 
+% Proof environment for claims that ends with a white square 
 % to distinguish it from the main theorem proof (which ends with a black/filled square).
 \newenvironment{claimproof}[1][Proof of Claim]{
     \begin{proof}[#1]
-    \renewcommand{\qedsymbol}{$\dashv$} % Or $\openbox$
+    \renewcommand{\qedsymbol}{$\openbox$} % Or \dashv
 }{
     \end{proof}
 }
