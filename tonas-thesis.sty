@@ -22,7 +22,7 @@
 % --- Figures and TikZ ---
 \usepackage{subcaption} % For subfigure environment
 \usepackage{tikz}
-\usetikzlibrary{positioning, arrows.meta, shapes.geometric, calc, decorations.markings, decorations.pathmorphing}
+\usetikzlibrary{positioning, arrows.meta, shapes.geometric, calc, decorations.markings, decorations.pathmorphing, decorations.pathreplacing}
 
 \tikzset{
     vertex/.style={circle, draw, fill=black, inner sep=0pt, minimum size=4pt},
@@ -56,7 +56,7 @@
 % to distinguish it from the main theorem proof (which ends with a black/filled square).
 \newenvironment{claimproof}[1][Proof of Claim]{
     \begin{proof}[#1]
-    \renewcommand{\qedsymbol}{$\openbox$} % Or \dashv
+    \renewcommand{\qedsymbol}{$\dashv$} % Or \openbox
 }{
     \end{proof}
 }
@@ -71,6 +71,9 @@
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\cl}{cl}
 \DeclareMathOperator{\id}{id}
+
+% Correct functional restrictions - ugh
+\renewcommand{\restriction}{\mathord{\upharpoonright}}
 
 \newcommand{\tFer}{\texttt{Fer}\ }
 \newcommand{\tfer}{\texttt{fer}\ }
