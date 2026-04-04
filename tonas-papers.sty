@@ -22,9 +22,12 @@
 \usepackage{fancyhdr}
 \usepackage[unicode, hidelinks]{hyperref}
 \usepackage[framemethod=TikZ]{mdframed}
-\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{decorations.pathreplacing, positioning, arrows.meta}
 \usepackage{fontawesome5}
 \usepackage{float}
+
+% Correct functional restrictions - ugh
+\renewcommand{\restriction}{\mathord{\upharpoonright}}
 
 % --- arXiv-style Boxed Title (Improved) ---
 \newcommand{\makeboxedtitle}[4]{
