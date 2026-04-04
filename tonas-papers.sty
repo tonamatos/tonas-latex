@@ -22,7 +22,7 @@
 \usepackage{fancyhdr}
 \usepackage[unicode, hidelinks]{hyperref}
 \usepackage[framemethod=TikZ]{mdframed}
-\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{decorations.pathreplacing, positioning, arrows.meta}
 \usepackage{fontawesome5}
 \usepackage{float}
 
@@ -97,7 +97,7 @@
 % to distinguish it from the main theorem proof (which ends with a black/filled square).
 \newenvironment{claimproof}[1][Proof of Claim]{
     \begin{proof}[#1]
-    \renewcommand{\qedsymbol}{$\openbox$} % Or \dashv
+    \renewcommand{\qedsymbol}{$\dashv$} % Or \openbox
 }{
     \end{proof}
 }
@@ -112,6 +112,9 @@
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\cl}{cl}
 \DeclareMathOperator{\id}{id}
+
+% Correct functional restrictions - ugh
+\renewcommand{\restriction}{\mathord{\upharpoonright}}
 
 \newcommand{\OG}{\mathcal{O}}
 \newcommand{\tFer}{\texttt{Fer}\ }
