@@ -1,3 +1,10 @@
+% tonas-thesis.sty
+% ---------------------------------------------------------------------------
+% Maintained at: https://github.com/tonamatos/tonas-latex
+% Developed by:  Tonatiuh Matos-Wiederhold (https://wiederhold.dev)
+% License:       Copyright (c) 2026 Tonatiuh Matos-Wiederhold. All rights reserved.
+% ---------------------------------------------------------------------------
+
 \ProvidesPackage{common/tonas-thesis}
 
 % --- Core Packages ---
@@ -6,20 +13,24 @@
 \usepackage{lineno}
 \usepackage{lipsum}
 \usepackage{enumitem}
-\usepackage[dvipsnames]{xcolor} % Required for the colors in your cmt/warn boxes
+\usepackage[dvipsnames]{xcolor}         % Required for the colors in cmt/warn boxes
 \usepackage[hidelinks]{hyperref}
 \usepackage[framemethod=TikZ]{mdframed} % For the fancy cmt/warn boxes
-\usepackage{fontawesome5} % For \faIcon
+\usepackage{fontawesome5}               % For \faIcon
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+\usepackage{xurl} % Fix annoying underfull \hbox in thesis.bbl
 
 % --- Figures and TikZ ---
 \usepackage{subcaption} % For subfigure environment
 \usepackage{tikz}
-\usetikzlibrary{positioning, arrows.meta, shapes.geometric}
+\usetikzlibrary{positioning, arrows.meta, shapes.geometric, calc, decorations.markings, decorations.pathmorphing, decorations.pathreplacing}
 
-% Define the styles used in your example TikZ code
 \tikzset{
     vertex/.style={circle, draw, fill=black, inner sep=0pt, minimum size=4pt},
-    vlabel/.style={font=\small, color=black}
+    vlabel/.style={font=\small, color=black},
+    % Specific styles for arrows
+    dot/.style={circle, fill=black, inner sep=0pt, minimum size=3pt, anchor=center},
+    arrow/.style={-{Latex[length=3pt, width=2.5pt]}, thin, black!60}
 }
 
 % --- Theorem Environments ---
@@ -28,6 +39,8 @@
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{axiom}{Axiom}
 \newtheorem{claim}{Claim}[theorem] % Numbered within theorems
 
 \theoremstyle{definition}
@@ -40,11 +53,11 @@
 \newtheorem{remark}[theorem]{Remark}
 
 % --- Special Claim Proof Environment ---
-% This creates a proof environment for claims that ends with a white square 
+% Proof environment for claims that ends with a white square 
 % to distinguish it from the main theorem proof (which ends with a black/filled square).
 \newenvironment{claimproof}[1][Proof of Claim]{
     \begin{proof}[#1]
-    \renewcommand{\qedsymbol}{$\dashv$} % Or $\openbox$
+    \renewcommand{\qedsymbol}{$\dashv$} % Or \openbox
 }{
     \end{proof}
 }
@@ -58,12 +71,26 @@
 \DeclareMathOperator{\bal}{bal}
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\cl}{cl}
+\DeclareMathOperator{\id}{id}
+
+% Correct functional restrictions - ugh
+\renewcommand{\restriction}{\mathord{\upharpoonright}}
+
+\newcommand{\tFer}{\texttt{Fer}\ }
+\newcommand{\tfer}{\texttt{fer}\ }
+\newcommand{\len}{\mathrm{len}}
+\newcommand{\RecFer}{\texttt{RecFer}}
+
+\newcommand{\NN}{\mathcal{N}}
+\newcommand{\CC}{\mathcal{C}}
+\newcommand{\DD}{\mathcal{D}}
+\newcommand{\CF}{\mathcal{C}_F}
 
 % --- Custom Environments ---
 \newenvironment{publications}
   {\chapter*{List of Publications}
    \addcontentsline{toc}{chapter}{List of Publications}
-   \noindent The contents of this thesis have been published in the following articles:}
+   \noindent The contents of this thesis have been published in the following manner:}
   {}
 
 % --- Comments & Warnings ---
