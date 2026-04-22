@@ -9,16 +9,20 @@
 
 % --- Core Packages ---
 \usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathrsfs} % Provides the \mathscr font
+\usepackage{mathtools} % Adds \coloneqq and improves amsmath
+\usepackage{stmaryrd} % Provides \llbracket and \rrbracket
 \usepackage{graphicx}
 \usepackage{lineno}
 \usepackage{lipsum}
-\usepackage{enumitem}
+\usepackage[shortlabels]{enumitem}
 \usepackage[dvipsnames]{xcolor}         % Required for the colors in cmt/warn boxes
 \usepackage[hidelinks]{hyperref}
 \usepackage[framemethod=TikZ]{mdframed} % For the fancy cmt/warn boxes
 \usepackage{fontawesome5}               % For \faIcon
 \usepackage[ruled,vlined,linesnumbered]{algorithm2e}
 \usepackage{xurl} % Fix annoying underfull \hbox in thesis.bbl
+\usepackage{cancel}
 
 % --- Figures and TikZ ---
 \usepackage{subcaption} % For subfigure environment
@@ -43,8 +47,11 @@
 \newtheorem{axiom}{Axiom}
 \newtheorem{claim}{Claim}[theorem] % Numbered within theorems
 
+\newtheorem*{AxExt}{Extendibility Axiom}
+
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
+\newtheorem{notation}[theorem]{Notation}
 \newtheorem{example}[theorem]{Example}
 \newtheorem{question}{Question}[chapter]
 \newtheorem{conjecture}{Conjecture}[chapter]
@@ -72,6 +79,7 @@
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\cl}{cl}
 \DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\tp}{tp}
 
 % Correct functional restrictions - ugh
 \renewcommand{\restriction}{\mathord{\upharpoonright}}
@@ -85,6 +93,42 @@
 \newcommand{\CC}{\mathcal{C}}
 \newcommand{\DD}{\mathcal{D}}
 \newcommand{\CF}{\mathcal{C}_F}
+
+\newcommand{\hatC}{\hat{\mathbb{C}}}
+\newcommand{\Cp}{\mathrm{C}_{\mathrm{p}}}
+\newcommand{\Lshard}{\mathcal{L}_{\mathrm{sh}}}
+\newcommand{\NIP}{\text{NIP}}
+\newcommand{\sh}{\text{sh}}
+\newcommand{\rb}{r_{\bullet}}
+\newcommand{\RP}{\mathbb{R}\mathbb{P}}
+
+\newcommand{\Brack}[1]{\left\llbracket{#1}\right\rrbracket}
+
+% 
+% Macro definitions: decorators
+%
+%%% Overleft arrow \ola
+\newcommand{\ora}{\overrightarrow}%[1]{\reflectbox{$\vec{\reflectbox{\!$#1$}}$}}
+\newcommand{\ola}{\overleftarrow}%[1]{\reflectbox{$\vec{\reflectbox{\!$#1$}}$}}
+%%% Double overbar
+\newcommand*{\bbar}[1]{\overline{\overline{#1}}}
+%%% Overarc \arc{…}
+\makeatletter
+\DeclareFontFamily{U}{tipa}{}
+\DeclareFontShape{U}{tipa}{m}{n}{<->tipa10}{}
+\newcommand{\arc@char}{{\usefont{U}{tipa}{m}{n}\symbol{62}}}%
+
+\newcommand{\arc}[1]{\mathpalette\arc@arc{#1}}
+
+\newcommand{\arc@arc}[2]{%
+  \sbox0{$\m@th#1#2$}%
+  \vbox{
+    \hbox{\resizebox{\wd0}{\height}{\arc@char}}
+    \nointerlineskip
+    \box0
+  }%
+}
+\makeatother
 
 % --- Custom Environments ---
 \newenvironment{publications}
