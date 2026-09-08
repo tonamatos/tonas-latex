@@ -40,6 +40,21 @@
 }
 
 % --- Theorem Environments ---
+% Guard: some TeX distributions ship packages that already define theorem
+% environments (and counters) of these names -- observed with TeX Live 2026,
+% where loading this file aborts with "Command \c@lemma already defined".
+% Clear any pre-existing definitions so the declarations below always take
+% effect and the numbering is the one this style file intends.
+\makeatletter
+\@for\tonas@thm:={theorem,lemma,proposition,corollary,fact,axiom,claim,%
+  definition,notation,example,question,conjecture,remark,AxExt}\do{%
+  \expandafter\let\csname \tonas@thm\endcsname\relax
+  \expandafter\let\csname end\tonas@thm\endcsname\relax
+  \expandafter\let\csname c@\tonas@thm\endcsname\relax
+  \expandafter\let\csname the\tonas@thm\endcsname\relax
+}%
+\makeatother
+
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[chapter]
 \newtheorem{lemma}[theorem]{Lemma}
